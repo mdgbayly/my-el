@@ -27,8 +27,9 @@
         <button class="d2l-dropdown-opener">Open it!</button>
         <d2l-dropdown-menu id="dropdown">
           <d2l-menu label="some menu">
-            <d2l-menu-item text="{{prop1}}"></d2l-menu-item>
-            <d2l-menu-item text="{{prop2}}"></d2l-menu-item>
+            <d2l-menu-item-checkbox text="[[prop1]]" value="1"></d2l-menu-item-checkbox>
+            <d2l-menu-item-checkbox text="[[prop2]]" value="2"></d2l-menu-item-checkbox>
+            <d2l-menu-item-checkbox text="[[prop3]]" value="3"></d2l-menu-item-checkbox>
           </d2l-menu>
         </d2l-dropdown-menu>
       </d2l-dropdown>
@@ -49,6 +50,10 @@
         prop2: {
           type: String,
           value: 'my-el-b',
+        },
+        prop3: {
+          type: String,
+          value: 'my-el-c',
         },
       },
 
