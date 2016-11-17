@@ -1,6 +1,11 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../d2l-dropdown/d2l-dropdown.html">
 <link rel="import" href="../d2l-dropdown/d2l-dropdown-content.html">
+<link rel="import" href="../d2l-menu/d2l-menu.html">
+<link rel="import" href="../d2l-menu/d2l-menu-item-checkbox.html">
+<link rel="import" href="../d2l-dropdown/d2l-dropdown-button.html">
+<link rel="import" href="../d2l-dropdown/d2l-dropdown-context-menu.html">
+<link rel="import" href="../d2l-dropdown/d2l-dropdown-menu.html">
 
 <dom-module id="my-el">
   <template>
@@ -16,6 +21,19 @@
           {{prop1}}
       </d2l-dropdown-content>
     </d2l-dropdown>
+    <p>Menu below</p>
+    <div>
+      <d2l-dropdown>
+        <button class="d2l-dropdown-opener">Open it!</button>
+        <d2l-dropdown-menu id="dropdown">
+          <d2l-menu label="some menu">
+            <d2l-menu-item text="{{prop1}}"></d2l-menu-item>
+            <d2l-menu-item text="{{prop2}}"></d2l-menu-item>
+          </d2l-menu>
+        </d2l-dropdown-menu>
+      </d2l-dropdown>
+    </div>
+
   </template>
 
   <script>
@@ -26,7 +44,11 @@
       properties: {
         prop1: {
           type: String,
-          value: 'my-el',
+          value: 'my-el-a',
+        },
+        prop2: {
+          type: String,
+          value: 'my-el-b',
         },
       },
 
