@@ -1,0 +1,95 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../d2l-colors/d2l-colors.html">
+<link rel="import" href="../d2l-polymer-behaviors/d2l-dom.html">
+<dom-module id="d2l-icon">
+	<template strip-whitespace>
+		<style include="d2l-colors">
+			:host {
+				-ms-flex-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				color: var(--d2l-color-tungsten);
+				display: -ms-inline-flexbox;
+				display: -webkit-inline-flex;
+				display: inline-flex;
+				height: var(--d2l-icon-height, 18px);
+				-ms-flex-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				vertical-align: middle;
+				width: var(--d2l-icon-width, 18px);
+				--iron-icon-height: var(--d2l-icon-height, 18px);
+				--iron-icon-width: var(--d2l-icon-width, 18px);
+			}
+			:host([icon*="d2l-tier2:"]) {
+				height: var(--d2l-icon-height, 24px);
+				width: var(--d2l-icon-width, 24px);
+				--iron-icon-height: var(--d2l-icon-height, 24px);
+				--iron-icon-width: var(--d2l-icon-width, 24px);
+			}
+			:host([icon*="d2l-tier3:"]) {
+				height: var(--d2l-icon-height, 30px);
+				width: var(--d2l-icon-width, 30px);
+				--iron-icon-height: var(--d2l-icon-height, 30px);
+				--iron-icon-width: var(--d2l-icon-width, 30px);
+			}
+		</style>
+		<iron-icon icon="[[icon]]"></iron-icon>
+	</template>
+	<script>
+		Polymer({
+			is: 'd2l-icon',
+
+			properties: {
+				icon: {
+					type: String,
+					observer: '__onChange',
+					reflectToAttribute: true
+				}
+			},
+
+			attached: function() {
+				this.async(function() {
+					this.__initialize();
+				});
+			},
+
+			__findSvg: function(node) {
+				var composedChildren = D2L.Dom.getComposedChildren(node);
+				for (var i = 0; i < composedChildren.length; i++) {
+					var c = composedChildren[i];
+					if (c.tagName.toLowerCase() === 'svg') {
+						return c;
+					}
+					var svg = this.__findSvg(c);
+					if (svg) {
+						return svg;
+					}
+				}
+				return null;
+			},
+
+			__getIronIcon: function() {
+				return this.$$('iron-icon');
+			},
+
+			__initialize: function() {
+				var svg = this.__findSvg(this);
+				if (!svg) {
+					return false;
+				}
+				/* IE prevent svg from being focusable */
+				svg.setAttribute('focusable', 'false');
+			},
+
+			__onChange: function() {
+				this.async(function() {
+					this.__initialize();
+					this.updateStyles(); // need to re-calc iron-icon variables
+				}, 1);
+			}
+
+		});
+	</script>
+</dom-module>

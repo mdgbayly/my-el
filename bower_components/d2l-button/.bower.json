@@ -1,0 +1,35 @@
+{
+  "name": "d2l-button",
+  "description": "Polymer-based web components for D2L buttons",
+  "main": "d2l-button.html",
+  "license": "Apache-2.0",
+  "ignore": [
+    "test",
+    "screenshots",
+    ".editorconfig",
+    ".gitignore",
+    ".travis.yml",
+    "package.json",
+    "wct.conf.json"
+  ],
+  "dependencies": {
+    "d2l-colors": "^2.0.0",
+    "polymer": "^1.5.0",
+    "iron-media-query": "^1.0.8"
+  },
+  "devDependencies": {
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.1.5",
+    "web-component-tester": "^4.2.2"
+  },
+  "homepage": "https://github.com/BrightspaceUI/button",
+  "version": "3.0.6",
+  "_release": "3.0.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "v3.0.6",
+    "commit": "1baf6bd4a6aef2fa71909c5067d88e360897bd73"
+  },
+  "_source": "https://github.com/BrightspaceUI/button.git",
+  "_target": "~3.0.6",
+  "_originalSource": "d2l-button"
+}
