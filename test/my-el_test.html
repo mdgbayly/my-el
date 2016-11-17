@@ -12,7 +12,7 @@
   </head>
   <body>
 
-    <test-fixture id="basic">
+    <test-fixture id="menu">
       <template>
         <my-el></my-el>
       </template>
@@ -20,6 +20,12 @@
 
     <script>
       suite('my-el', function() {
+
+        var menu;
+
+        beforeEach(function() {
+          menu = fixture('menu');
+        });
 
         test('instantiating the element works', function() {
           let element = fixture('basic');

@@ -14,27 +14,16 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]</h2>
     <d2l-dropdown>
-      <button class="d2l-dropdown-opener">Open!</button>
-      <d2l-dropdown-content>
-          {{prop1}}
-      </d2l-dropdown-content>
+      <button class="d2l-dropdown-opener">Open it!</button>
+      <d2l-dropdown-menu id="dropdown">
+        <d2l-menu label="some menu">
+          <template is="dom-repeat" items="{{items}}">
+            <d2l-menu-item-checkbox text="{{item.title}}" value="{{index}}" selected="{{item.isSelected}}"></d2l-menu-item-checkbox>
+          </template>
+        </d2l-menu>
+      </d2l-dropdown-menu>
     </d2l-dropdown>
-    <p>Menu below</p>
-    <div>
-      <d2l-dropdown>
-        <button class="d2l-dropdown-opener">Open it!</button>
-        <d2l-dropdown-menu id="dropdown">
-          <d2l-menu label="some menu">
-            <d2l-menu-item-checkbox text="[[prop1]]" value="1"></d2l-menu-item-checkbox>
-            <d2l-menu-item-checkbox text="[[prop2]]" value="2"></d2l-menu-item-checkbox>
-            <d2l-menu-item-checkbox text="[[prop3]]" value="3"></d2l-menu-item-checkbox>
-          </d2l-menu>
-        </d2l-dropdown-menu>
-      </d2l-dropdown>
-    </div>
-
   </template>
 
   <script>
@@ -42,21 +31,19 @@
 
       is: 'my-el',
 
-      properties: {
-        prop1: {
-          type: String,
-          value: 'my-el-a',
-        },
-        prop2: {
-          type: String,
-          value: 'my-el-b',
-        },
-        prop3: {
-          type: String,
-          value: 'my-el-c',
-        },
+      ready: function() {
+        console.log(this.localName + '#' + this.id + ' has local DOM initialized');
+        console.log(this.items);
       },
 
+      properties: {
+        items: {
+          type: Array,
+          value: function() {
+            return []
+          },
+        },
+      },
     });
   </script>
 </dom-module>

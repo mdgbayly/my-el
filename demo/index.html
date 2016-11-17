@@ -20,10 +20,20 @@
       <h3>Basic my-el Demo</h3>
       <demo-snippet>
         <template>
-          <my-el prop1="zinglewaga"></my-el>
+          <my-el items='[{ "title": "Zinglewaga", "isSelected": true}, { "title": "Zinglezoo", "isSelected": false}, { "title": "Zingleish", "isSelected": true}]'></my-el>
         </template>
       </demo-snippet>
     </div>
+
+    <script>
+    window.addEventListener('WebComponentsReady', function(e) {
+      var menu = document.querySelector('my-el');
+      menu.addEventListener('d2l-menu-item-change', function(e) {
+        console.log(e.detail.value);
+        console.log(e.detail.selected);
+      })
+    });
+    </script>
 
   </body>
 </html>
